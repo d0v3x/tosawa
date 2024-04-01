@@ -1,1 +1,0 @@
-pritnt("hello")
