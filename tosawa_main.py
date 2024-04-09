@@ -11,6 +11,7 @@ while True:
     if sensorState != previousSensorState:
         if sensorState == b'1':  
             print("磁気センサーが離れました。")
+            time.sleep(1)
             subprocess.call(['python',file_path]) 
         else:
             print("磁気センサーが近づきました。")
