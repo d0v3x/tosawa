@@ -86,6 +86,7 @@ if predicted_class == "wada":
     # LINE Notifyでメッセージを送信
     send_line_notify_with_message(message_with_timestamp)
     print("LINEの送信が完了しました。")
+    # 和田さんが外出しているプログラムが動いているかの真偽をチェック。稼働中なら終了し、稼働してないなら起動。
     if check_process(program_name):
          print("和田さんが帰宅しました。")
          stop_process(program_name)
