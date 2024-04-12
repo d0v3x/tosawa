@@ -15,6 +15,7 @@ def main():
         elapsed_time = current_time - start_time
         if elapsed_time >= 60:
             send_line_notify("和田さんが外出してから1時間が経過しました。055-xxx-xxxに通報しますか？")
+            print("和田さんが外出してから1時間が経過したので、通報用のLINEを送信しました。")
             break
         time.sleep(1)
 
