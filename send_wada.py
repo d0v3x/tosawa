@@ -1,13 +1,16 @@
+# 外出60秒後にLINEで通知するプログラム
 import requests
 import time
 
+# LINEの送信内容定義
 def send_line_notify(message):
     line_notify_token = 'AMRkehZHu6zyWtFB1DvBPlsqgRSRESgRlr5LN4Hxl5G'
     line_notify_api = 'https://notify-api.line.me/api/notify'
     headers = {'Authorization': f'Bearer {line_notify_token}'}
     payload = {'message': message}
     requests.post(line_notify_api, headers=headers, data=payload)
-
+    
+# メインループの定義
 def main():
     start_time = time.time()
     while True:

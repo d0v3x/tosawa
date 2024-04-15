@@ -33,8 +33,7 @@ file_path = "/home/pi/ai101/send_wada.py"
 class_names = {
     "wada": "和田",
     "sano": "佐野",
-    "tomioka": "冨岡",
-    "other": "登録されていない人物"
+    "tomioka": "冨岡"
 }
 
 # vgg16用のリサイズ数値の定義
@@ -51,7 +50,7 @@ X.append(data)
 X = np.array(X)
 
 # モデルを読み込む
-model = load_model('./tosawa_face.h5')
+model = load_model('./tosawa_face_v6.h5')
 
 # 予測を行い、確率とクラス名と日本語名をpercentageとpredicted_class_jpに代入
 result = model.predict([X])[0]
@@ -65,6 +64,8 @@ line_notify_token = 'AMRkehZHu6zyWtFB1DvBPlsqgRSRESgRlr5LN4Hxl5G'
 
 # 予測されたクラスが "wada" の場合にメッセージを送信
 if predicted_class == "wada":
+    # 予測した人物をターミナルに確信度とクラス名を表示
+    print(f"予測された人物は {predicted_class_jp} さんで、確信度は {percentage}% です。")
     # 送信するメッセージを作成
     message = f"予測された人物は {predicted_class_jp} さんで、確信度は {percentage}% です。"
     # タイムスタンプを追加
@@ -97,7 +98,7 @@ if predicted_class == "wada":
 # 予測されたクラスが "wada" 以外の場合にメッセージを送信。         
 elif predicted_class != "wada":
     # 予測した人物をターミナルに確信度とクラス名を表示
-    print(f f"予測された人物は {predicted_class_jp} さんで、確信度は {percentage}% です。")
+    print(f"予測された人物は {predicted_class_jp} さんで、確信度は {percentage}% です。")
     
     # 送信するメッセージを作成
     message = f"予測された人物は {predicted_class_jp} さんで、確信度は {percentage}% です。"
@@ -118,4 +119,4 @@ elif predicted_class != "wada":
         requests.post('https://notify-api.line.me/api/notify', headers=headers, data=payload, files=files)
 
     # LINE Notifyでメッセージを送信
-    send_line_notify_with_message(message_with_timestamp)
+    #send_line_notify_with_message(message_with_timestamp)
