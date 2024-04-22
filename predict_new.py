@@ -60,7 +60,7 @@ predicted_class = list(class_names.keys())[predicted_class_index]
 predicted_class_jp = class_names[predicted_class]
 
 # LINE Notifyのアクセストークンを設定
-line_notify_token = 'AMRkehZHu6zyWtFB1DvBPlsqgRSRESgRlr5LN4Hxl5G'
+line_notify_token = 'Your token'
 
 # 予測されたクラスが "wada" の場合にメッセージを送信
 if predicted_class == "wada":
